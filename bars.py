@@ -8,7 +8,6 @@ def load_data(filepath):
         return json.loads(lines)
 
 
-
 def get_biggest_bar(data):
     js = data
     global max_seats_count
@@ -20,6 +19,7 @@ def get_biggest_bar(data):
                 largest_bar = i['Name']
     return "Самый большой бар - {} , Число мест - {} ".format(largest_bar, max_seats_count )
 
+
 def get_smallest_bar(data):
     js = data
     min_seats_count = max_seats_count
@@ -30,7 +30,6 @@ def get_smallest_bar(data):
                 min_seats_count = i['SeatsCount']
                 smallest_bar = i['Name']
     return "Самый маленький бар - {} , Число мест - {} ".format(smallest_bar, min_seats_count)
-
 
 
 def get_closest_bar(data, longitude, latitude):
@@ -54,7 +53,6 @@ def get_closest_bar(data, longitude, latitude):
                 near_latt = cur_latt
                 near_add = i['Address']
     return "Ближайший бар - {} , адрес - {} ".format(nearest_bar, near_add)
-
 
 
 if __name__ == '__main__':
