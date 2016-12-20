@@ -9,22 +9,22 @@ def load_data(filepath):
 
 
 def get_biggest_bar(data):
-    js = data
+    json_content = data
     global max_seats_count
-    largest_bar = ''
-    for i in js:
+    biggest_bar = ''
+    for i in json_content:
         if i['TypeObject'] == 'бар':
             if int(i['SeatsCount']) > max_seats_count:
                 max_seats_count = i['SeatsCount']
-                largest_bar = i['Name']
-    return "Самый большой бар - {} , Число мест - {} ".format(largest_bar, max_seats_count )
+                biggest_bar = i['Name']
+    return "Самый большой бар - {} , Число мест - {} ".format(biggest_bar, max_seats_count )
 
 
 def get_smallest_bar(data):
-    js = data
+    json_content = data
     min_seats_count = max_seats_count
     smallest_bar = ''
-    for i in js:
+    for i in json_content:
         if i['TypeObject'] == 'бар':
             if int(i['SeatsCount']) < max_seats_count:
                 min_seats_count = i['SeatsCount']
@@ -33,15 +33,15 @@ def get_smallest_bar(data):
 
 
 def get_closest_bar(data, longitude, latitude):
-    js = data
+    json_content = data
     my_long = longitude
     my_latt = latitude
     min_dist = 1000
     nearest_bar = ''
     near_long = 0
     near_latt = 0
-    near_add = ''
-    for i in js:
+    near_address = ''
+    for i in json_content:
         if i['TypeObject'] == 'бар':
             cur_long = float(i['geoData']['coordinates'][0])
             cur_latt = float(i['geoData']['coordinates'][1])
@@ -51,8 +51,8 @@ def get_closest_bar(data, longitude, latitude):
                 nearest_bar = i['Name']
                 near_long = cur_long
                 near_latt = cur_latt
-                near_add = i['Address']
-    return "Ближайший бар - {} , адрес - {} ".format(nearest_bar, near_add)
+                near_address = i['Address']
+    return "Ближайший бар - {} , адрес - {} ".format(nearest_bar, near_address)
 
 
 if __name__ == '__main__':
